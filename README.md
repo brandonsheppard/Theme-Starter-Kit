@@ -14,7 +14,7 @@ bin/generatetheme themeName
 
 This will create a new directory, outside of but adjacent to this directory, called `themeName`. It will have everything you need set-up.
 
-Note that you need Node.js installed, and gulp.js installed globally to run this script successfully. 
+Note that you need [Node.js](https://nodejs.org/en/) installed, and [gulp.js](http://gulpjs.com/) installed globally to run this script successfully. 
 
 ## How to build a theme
 
@@ -39,8 +39,6 @@ cd Themes
 git clone https://github.com/brandonsheppard/Theme-Starter-Kit.git
 ```
 
-![](http://design.neto.com.au/assets/uploads/PghH4cTqxh.gif)
-
 Your themes directory should look like this:
 
 ```
@@ -56,8 +54,6 @@ We are now ready to generate our first theme. To do this we simly need to naviga
 cd Theme-Starter-Kit
 bin/generateTheme mynewtheme
 ```
-
-![](http://design.neto.com.au/assets/uploads/8RJ8dExn3j.gif)
 
 **Note: You need to replace `mynewtheme` with the name of your new theme.**
 
