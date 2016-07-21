@@ -1,7 +1,12 @@
 #!/bin/bash
 
 # Folder where everything will be compiled to
-DEST="../newTheme"
+if [[ -n "$1" ]]; then
+	DEST="../$1"
+else
+	DEST="../newTheme"
+fi
+
 TEMP="./temp"
 
 rm -rf $DEST
@@ -12,6 +17,7 @@ mkdir $TEMP
 # Determine the theme list dynamically
 cd "./"
 
+echo "Theme starter kit 👜"
 echo "Generate Theme! 🙏"
 echo "This script will setup a new theme repository for you so you can start working on a new website."
 
@@ -58,7 +64,7 @@ echo "👉 Copying the assets from Skeletal to our new theme."
 # Copy in custom.js and app.less
 cp -r "${TEMP}/.latestSkeletal/src/css/app.less" "${DEST}/src/css/"
 cp -r "${TEMP}/.latestSkeletal/src/css/app.css" "${DEST}/src/css/"
-cp -r "${TEMP}/.latestSkeletal/src/css/skeletal-style.css" "${DEST}/src/css/"
+cp -r "${TEMP}/.latestSkeletal/src/css/skeletal-style.css" "${DEST}/src/css/$1-style.css"
 cp -r "${TEMP}/.latestSkeletal/src/js/custom.js" "${DEST}/src/js/"
 
 echo "👍"
@@ -91,6 +97,12 @@ cd "${DEST}"
 npm install
 
 echo "👍👍👍👍👍👍👍👍"
-echo "Your new theme is located at ../newTheme. You can go there in terminal with the command cd ../newTheme"
-echo "You're not done! You need to rename your theme folder (../newTheme) to reflect the name of your theme and update package.json to use the correct git repo."
+echo "Your new theme is located at ${DEST}. You can go there in terminal with the command cd ${DEST}"
+
+if [[ -n "$1" ]]; then
+	echo "Congratulations! You can now start working on your new theme."
+else
+	echo "You're not done! You need to rename your theme folder (${DEST}) to reflect the name of your theme and update package.json to use the correct git repo."
+fi
+
 echo "🤘"
