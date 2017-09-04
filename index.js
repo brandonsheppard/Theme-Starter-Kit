@@ -2,11 +2,12 @@
 
 var shell = require('shelljs');
 var program = require('commander');
+var pkg = require('./package.json');
 
-function generateTheme(themeName){
+function generateTheme(name){
 	// Folder where everything will be compiled to
-	if(themeName){
-		var DEST = `./${themeName}`;
+	if(name){
+		var DEST = `./${name}`;
 	}else{
 		var DEST = './newTheme';
 	}
@@ -103,7 +104,7 @@ function generateTheme(themeName){
 	console.log( "👍👍👍👍👍👍👍👍");
 	console.log( `Your new theme is located at ${DEST}. You can go there in terminal with the command cd ${DEST}`);
 
-	if(themeName){
+	if(name){
 		console.log( "Congratulations! You can now start working on your new theme.");
 	}else{
 		console.log( `You're not done! You need to rename your theme folder (${DEST}) to reflect the name of your theme and update package.json to use the correct git repo.`);
@@ -112,4 +113,12 @@ function generateTheme(themeName){
 	console.log( "🤘");
 	shell.exit(1);
 }
-generateTheme(process.argv[2]);
+
+program
+	.version(pkg.version)
+	.command('ntheme <name>', 'create a new Neto theme', {isDefault: true})
+	.action(generateTheme)
+
+program.parse(process.argv);
+
+if (program.args.length === 0) program.help();
