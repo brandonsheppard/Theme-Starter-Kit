@@ -1,6 +1,10 @@
+```
+npm install -g ntheme
+```
+
 ![](http://design.neto.com.au/assets/uploads/QR0D5N9y3D.png)
 
-This repo contains a script, `generatetheme`, which will set up a new environment for you to build a Neto theme!
+This repo contains a node module, `generatetheme`, which will set up a new environment for you to build a Neto theme!
 
 It also acts as a repository for themeScripts which are used within the themes to compile, update and upload stuff. You shouldn't run these scripts within this repository—they are just here for version control and storage.
 
@@ -9,12 +13,12 @@ It also acts as a repository for themeScripts which are used within the themes t
 To build a new theme, simply navigate to this repository in terminal and run the following command:
 
 ```
-bin/generatetheme themeName
+ntheme themeName
 ```
 
-This will create a new directory, outside of but adjacent to this directory, called `themeName`. It will have everything you need set-up.
+This will create a new directory, inside the current directory, called `themeName`. It will have everything you need set-up.
 
-Note that you need [Node.js](https://nodejs.org/en/) installed, and [gulp.js](http://gulpjs.com/) installed globally to run this script successfully. 
+Note that you need [Node.js](https://nodejs.org/en/) installed, and [gulp.js](http://gulpjs.com/) installed globally to run this script successfully.
 
 ## How to build a theme
 
@@ -32,27 +36,18 @@ Themes
 └── Sherwood-Theme
 ```
 
-After you have created your new **Themes** directory, clone this repository into it:
+After you have created your new **Themes** directory, `cd` into the theme:
 
 ```
 cd Themes
-git clone https://github.com/brandonsheppard/Theme-Starter-Kit.git
-```
-
-Your themes directory should look like this:
-
-```
-Themes
-└── Theme-Starter-Kit
 ```
 
 ### Generate your theme
 
-We are now ready to generate our first theme. To do this we simly need to navigate to our Theme-Starter-Kit directory in terminal and run the script which will generate our theme.
+We are now ready to generate our first theme. To do this we simply need to run the ntheme command:
 
 ```
-cd Theme-Starter-Kit
-bin/generateTheme mynewtheme
+ntheme mynewtheme
 ```
 
 **Note: You need to replace `mynewtheme` with the name of your new theme.**
