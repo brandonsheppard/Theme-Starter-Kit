@@ -10,7 +10,7 @@ It also acts as a repository for themeScripts which are used within the themes t
 
 ## How it works
 
-To build a new theme, simply navigate to this repository in terminal and run the following command:
+To build a new theme, simply navigate to a directory you wish your theme to be in via terminal and run the following command:
 
 ```
 ntheme themeName
