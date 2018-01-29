@@ -13,7 +13,8 @@ It also acts as a repository for themeScripts which are used within the themes t
 To build a new theme, simply navigate to a directory you wish your theme to be in via terminal and run the following command:
 
 ```
-ntheme generate themeName
+- generate <name>  Create a new Neto theme
+- compile          Compiles a Neto theme
 ```
 
 This will create a new directory, inside the current directory, called `themeName`. It will have everything you need set-up.
