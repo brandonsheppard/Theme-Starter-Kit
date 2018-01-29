@@ -41,9 +41,8 @@ module.exports.generateTheme = (name) => {
 	shell.mkdir('-p', `${DEST}/src/templates/footers`);
 	// Create directories for assets
 	shell.mkdir('-p', `${DEST}/src/css`);
-	// Create bin and Buildkite directory
+	// Create Buildkite directory
 	shell.mkdir('-p', `${DEST}/.buildkite`);
-	shell.mkdir('-p', `${DEST}/bin`);
 	log(success("👍 Directories created!"));
 
 	log(warning("Copying the required files from Skeletal to our new theme."));
@@ -62,8 +61,6 @@ module.exports.generateTheme = (name) => {
 	shell.cp('-r', `${TEMP}/.latestSkeletal/README.md`,`${DEST}/`);
 	// Copy buildkite
 	shell.cp('-r', `${TEMP}/.latestSkeletal/.buildkite/.`,`${DEST}/.buildkite/`);
-	// Copy these scripts
-	shell.cp('-r', `./scripts/compile`,`${DEST}/bin/`);
 
 	// Remove temp folder
 	shell.rm('-rf', TEMP);
