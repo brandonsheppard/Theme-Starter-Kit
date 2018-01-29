@@ -1,13 +1,13 @@
 {
   "name": "ntheme",
-  "version": "1.1.3",
+  "version": "1.2.4",
   "description": "Set up a new environment for you to build a Neto theme!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "ntheme": "./index.js"
+    "ntheme": "index.js"
   },
   "preferGlobal": true,
   "repository": {
