@@ -4,16 +4,16 @@ npm install -g ntheme
 
 ![](http://design.neto.com.au/assets/uploads/QR0D5N9y3D.png)
 
-This repo contains a node module, `generatetheme`, which will set up a new environment for you to build a Neto theme!
+This repo contains a node module, `ntheme`, which will set up a new environment for you to build a Neto theme!
 
 It also acts as a repository for themeScripts which are used within the themes to compile, update and upload stuff. You shouldn't run these scripts within this repository—they are just here for version control and storage.
 
-## How it works
+## Commands
 
 To build a new theme, simply navigate to a directory you wish your theme to be in via terminal and run the following command:
 
 ```
-ntheme themeName
+ntheme generate themeName
 ```
 
 This will create a new directory, inside the current directory, called `themeName`. It will have everything you need set-up.
@@ -28,8 +28,7 @@ To start, you need a **Themes** directory where you will keep this repository as
 
 ```
 Themes
-├── Theme-Starter-Kit
-├── Ardrossan-Theme
+├── My-Awesome-Theme
 ├── Cart-Brewery-Theme
 ├── Classic-Theme
 ├── Country-Theme
@@ -47,14 +46,14 @@ cd Themes
 We are now ready to generate our first theme. To do this we simply need to run the ntheme command:
 
 ```
-ntheme mynewtheme
+ntheme generate themeName
 ```
 
-**Note: You need to replace `mynewtheme` with the name of your new theme.**
+**Note: You need to replace `themeName` with the name of your new theme.**
 
 ### Set up git
 
-Now, you just need to set up git. If you're not experienced with git, I recommend you install [GitHub Desktop](https://desktop.github.com/) and [set up the repository using the app](http://design.neto.com.au/assets/uploads/E9FX9Dej3d.gif).
+Now, you just need to set up git. If you're not experienced with git, We recommend you install [GitHub Desktop](https://desktop.github.com/) and [set up the repository using the app](http://design.neto.com.au/assets/uploads/E9FX9Dej3d.gif).
 
 ### Customising templates
 
@@ -73,8 +72,6 @@ mythemename
     │   ├── app.css
     │   ├── app.less
     │   └── mythemename-style.css
-    ├── js
-    │   └── custom.js
     └── templates
         ├── cms
         │   └── home.template.html
@@ -97,7 +94,7 @@ You will need to configure your FTP application to upload your files without rem
 Any custom styles which you add to your theme should be done in `src/css/app.less`. This file can be compiled into `app.css` by running the `gulp` command in your theme:
 
 ```
-cd mythemename
+cd themeName
 gulp
 ```
 
