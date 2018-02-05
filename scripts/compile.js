@@ -9,18 +9,17 @@ const warning = chalk.yellow
 
 module.exports.compileTheme = () => {
 	// Folder where everything will be compiled to
-	var DIST = "./dist"
-	// Re-create the 'dist' directory
+	const DIST = "./dist"
+	// Recreate the 'dist' directory
 	shell.rm('-rf', DIST)
 	shell.mkdir('-p', DIST)
-
 	shell.cd('./')
 	log(warning("Fetching latest Skeletal..."))
 	shell.exec(`git clone --depth 1 https://github.com/NetoECommerce/Skeletal.git ${DIST}/.latestSkeletal`)
 
-	const json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+	const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 	if(json.theme_names){
-		const THEMES = json.theme_names
+		const THEMES = pkg.theme_names
 	}else{
 		shell.cd("./src/templates")
 		const THEMES = shell.ls('-A', '*-netothemeinfo.txt')
