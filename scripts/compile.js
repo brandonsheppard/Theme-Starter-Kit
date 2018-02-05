@@ -18,7 +18,7 @@ module.exports.compileTheme = () => {
 	shell.exec(`git clone --depth 1 https://github.com/NetoECommerce/Skeletal.git ${DIST}/.latestSkeletal`)
 
 	const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'))
-	if(json.theme_names){
+	if(pkg.theme_names){
 		const THEMES = pkg.theme_names
 	}else{
 		shell.cd("./src/templates")
