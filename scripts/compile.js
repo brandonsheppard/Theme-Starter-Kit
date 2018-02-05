@@ -20,10 +20,10 @@ module.exports.compileTheme = () => {
 
 	const json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 	if(json.theme_names){
-		let THEMES = json.theme_names
+		const THEMES = json.theme_names
 	}else{
 		shell.cd("./src/templates")
-		let THEMES = shell.ls('-A', '*-netothemeinfo.txt')
+		const THEMES = shell.ls('-A', '*-netothemeinfo.txt')
 		shell.cd("../../")
 	}
 
