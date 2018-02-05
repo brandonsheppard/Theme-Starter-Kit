@@ -19,8 +19,10 @@ module.exports.compileTheme = () => {
 
 	const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 	if(pkg.theme_names){
+		log(warning('Using package.json theme_names to create themes'))
 		const THEMES = pkg.theme_names
 	}else{
+		log(warning('Using netothemeinfo files to create themes'))
 		shell.cd("./src/templates")
 		const THEMES = shell.ls('-A', '*-netothemeinfo.txt')
 		shell.cd("../../")
@@ -36,29 +38,29 @@ module.exports.compileTheme = () => {
 		shell.cp('-r', `${DIST}/.latestSkeletal/src/templates/.`, `${DIST}/${theme}/`)
 		shell.cp('-r', `${DIST}/.latestSkeletal/src/css`, `${DIST}/${theme}/_assets`)
 		shell.cp('-r', `${DIST}/.latestSkeletal/src/js`, `${DIST}/${theme}/_assets`)
-		// Copy Templates
+		// Copy templates
 		shell.cp('-r', `./src/templates/.`, `${DIST}/${theme}/`)
-		// Copy Assets
+		// Copy assets
 		shell.cp('-r', `./src/css`, `${DIST}/${theme}/_assets`)
 		shell.cp('-r', `./src/js`, `${DIST}/${theme}/_assets`)
 		shell.cp('-r', `./src/img`, `${DIST}/${theme}/_assets`)
-		// Rename theme stylesheet to style.css
+		// Rename stylesheet to style.css
 		shell.mv(`${DIST}/${theme}/_assets/css/${theme}-style.css`, `${DIST}/${theme}/_assets/css/style.css`)
-		// Rename theme info file to netothemeinfo.txt
+		// Rename info file to netothemeinfo.txt
 		shell.mv(`${DIST}/${theme}/${theme}-netothemeinfo.txt`, `${DIST}/${theme}/netothemeinfo.txt`)
 		log(success(`👍 ${theme} built!`))
 	})
 
 	shell.cd("./dist/")
-	shell.rm('-rf', "./.latestSkeletal")
 	log(warning("Compressing themes..."))
 
 	fs.readdirSync('./').forEach(themeFolder => {
-		// Archive each folder
+		// Zip each folder
 		shell.exec(`zip -rq ${themeFolder}.zip ${themeFolder}`)
 		shell.rm('-rf', themeFolder);
 	})
 
+	shell.rm('-rf', "./.latestSkeletal")
 	shell.cd("../")
 	log(success("👍👍👍 Swag!"))
 	shell.exit(1)
