@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
+const fs = require('fs')
+const pkg = require('../package.json');
+
 const shell = require('shelljs')
 const chalk = require('chalk')
 const log = console.log
@@ -23,7 +25,12 @@ module.exports.compileTheme = () => {
 	shell.exec(`git clone --depth 1 https://github.com/NetoECommerce/Skeletal.git ${DIST}/.latestSkeletal`)
 
 	shell.cd("./src/templates")
-	var THEMES = shell.ls('-A', '*-netothemeinfo.txt');
+	// var THEMES = shell.ls('-A', '*-netothemeinfo.txt')
+	if(pkg.theme_names){
+		var THEMES = pkg.theme_names
+	}else{
+		var THEMES = shell.ls('-A', '*-netothemeinfo.txt')
+	}
 
 	THEMES.forEach(theme => {
 		theme = theme.replace(/-netothemeinfo.txt*$/, "")
@@ -41,22 +48,23 @@ module.exports.compileTheme = () => {
 		shell.cp('-r', `./src/templates/.`, `${DIST}/${theme}/`)
 		// Copy Assets
 		shell.cp('-r', `./src/css`, `${DIST}/${theme}/_assets`)
+		shell.cp('-r', `./src/js`, `${DIST}/${theme}/_assets`)
 		shell.cp('-r', `./src/img`, `${DIST}/${theme}/_assets`)
 		// Rename theme stylesheet to style.css
 		shell.mv(`${DIST}/${theme}/_assets/css/${theme}-style.css`, `${DIST}/${theme}/_assets/css/style.css`)
 		// Rename theme info file to netothemeinfo.txt
 		shell.mv(`${DIST}/${theme}/${theme}-netothemeinfo.txt`, `${DIST}/${theme}/netothemeinfo.txt`)
 		shell.cd("./src/templates")
-		log(success(`👍 ${theme} built!`));
+		log(success(`👍 ${theme} built!`))
 	})
 
 	shell.cd("../../dist/")
-	shell.rm('-rf', "./.latestSkeletal");
+	shell.rm('-rf', "./.latestSkeletal")
 	log(warning("Compressing themes..."))
 
 	fs.readdirSync('./').forEach(themeFolder => {
 		// Archive each folder
-		shell.exec(`zip -rq ${themeFolder}.zip ${themeFolder}`);
+		shell.exec(`zip -rq ${themeFolder}.zip ${themeFolder}`)
 		shell.rm('-rf', themeFolder);
 	})
 

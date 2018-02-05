@@ -1,6 +1,6 @@
 {
   "name": "ntheme",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Set up a new environment for you to build a Neto theme!",
   "main": "index.js",
   "scripts": {
@@ -12,14 +12,14 @@
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brandonsheppard/Theme-Starter-Kit.git"
+    "url": "git+https://github.com/philcon93/Theme-Starter-Kit.git"
   },
   "author": "Phil Connah",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/brandonsheppard/Theme-Starter-Kit/issues"
+    "url": "https://github.com/philcon93/Theme-Starter-Kit/issues"
   },
-  "homepage": "https://github.com/brandonsheppard/Theme-Starter-Kit#readme",
+  "homepage": "https://github.com/philcon93/Theme-Starter-Kit#readme",
   "dependencies": {
     "chalk": "^2.3.0",
     "commander": "^2.13.0",

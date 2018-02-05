@@ -10,33 +10,16 @@ It also acts as a repository for themeScripts which are used within the themes t
 
 ## Commands
 
-To build a new theme, simply navigate to a directory you wish your theme to be in via terminal and run the following command:
-
 ```
 - generate <name>  Create a new Neto theme
 - compile          Compiles a Neto theme
 ```
 
-This will create a new directory, inside the current directory, called `themeName`. It will have everything you need set-up.
-
 Note that you need [Node.js](https://nodejs.org/en/) installed, and [gulp.js](http://gulpjs.com/) installed globally to run this script successfully.
 
 ## How to build a theme
 
-### Set up directories and clone the kit
-
-To start, you need a **Themes** directory where you will keep this repository as well as the repositories for each of your themes. Your **Themes** directory will eventually look something like this:
-
-```
-Themes
-├── My-Awesome-Theme
-├── Cart-Brewery-Theme
-├── Classic-Theme
-├── Country-Theme
-└── Sherwood-Theme
-```
-
-After you have created your new **Themes** directory, `cd` into the theme:
+Create your **Themes** directory and `cd` into the directory:
 
 ```
 cd Themes
@@ -44,13 +27,13 @@ cd Themes
 
 ### Generate your theme
 
-We are now ready to generate our first theme. To do this we simply need to run the ntheme command:
+We are now ready to generate our first theme. To do this we simply need to run the generate command:
 
 ```
 ntheme generate themeName
 ```
 
-**Note: You need to replace `themeName` with the name of your new theme.**
+**Note: You would replace `themeName` with the name of your new theme.**
 
 ### Set up git
 
