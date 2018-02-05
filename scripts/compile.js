@@ -52,6 +52,7 @@ module.exports.compileTheme = () => {
 	})
 
 	shell.cd("./dist/")
+	shell.rm('-rf', "./.latestSkeletal")
 	log(warning("Compressing themes..."))
 
 	fs.readdirSync('./').forEach(themeFolder => {
@@ -60,7 +61,6 @@ module.exports.compileTheme = () => {
 		shell.rm('-rf', themeFolder);
 	})
 
-	shell.rm('-rf', "./.latestSkeletal")
 	shell.cd("../")
 	log(success("👍👍👍 Swag!"))
 	shell.exit(1)
