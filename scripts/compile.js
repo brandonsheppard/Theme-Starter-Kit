@@ -29,7 +29,9 @@ module.exports.compileTheme = () => {
 		console.log('using package.json')
 		var THEMES = json.theme_names
 	}else{
+		shell.cd("./src/templates")
 		var THEMES = shell.ls('-A', '*-netothemeinfo.txt')
+		shell.cd("../../")
 	}
 
 	THEMES.forEach(theme => {
