@@ -19,12 +19,12 @@ module.exports.compileTheme = () => {
 
 	const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 	if(pkg.theme_names){
-		log(warning('Using package.json theme_names to create themes'))
-		const THEMES = pkg.theme_names
+		log(warning('Using package.json theme_names to create theme(s)'))
+		var THEMES = pkg.theme_names
 	}else{
-		log(warning('Using netothemeinfo files to create themes'))
+		log(warning('Using neto-theme-info file to create theme(s)'))
 		shell.cd("./src/templates")
-		const THEMES = shell.ls('-A', '*-netothemeinfo.txt')
+		var THEMES = shell.ls('-A', '*-netothemeinfo.txt')
 		shell.cd("../../")
 	}
 
