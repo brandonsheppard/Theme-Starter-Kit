@@ -14,30 +14,21 @@ module.exports.compileTheme = () => {
 	shell.rm('-rf', DIST)
 	shell.mkdir('-p', DIST)
 
-	// Determine the theme list dynamically
 	shell.cd('./')
-	// MAINTHEME="$(basename $PWD)"
-	var MAINTHEME = process.cwd()
-
 	log(warning("Fetching latest Skeletal..."))
 	shell.exec(`git clone --depth 1 https://github.com/NetoECommerce/Skeletal.git ${DIST}/.latestSkeletal`)
 
-	// shell.cd("./src/templates")
 	const json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-
 	if(json.theme_names){
-		console.log('using package.json')
-		var THEMES = json.theme_names
+		let THEMES = json.theme_names
 	}else{
 		shell.cd("./src/templates")
-		var THEMES = shell.ls('-A', '*-netothemeinfo.txt')
+		let THEMES = shell.ls('-A', '*-netothemeinfo.txt')
 		shell.cd("../../")
 	}
 
 	THEMES.forEach(theme => {
 		theme = theme.replace(/-netothemeinfo.txt*$/, "")
-		// Back to root
-		// shell.cd("../../")
 		log(warning(`Building '${theme}' theme...`))
 		// Create theme folder
 		shell.mkdir('-p', `${DIST}/${theme}`)
@@ -56,7 +47,6 @@ module.exports.compileTheme = () => {
 		shell.mv(`${DIST}/${theme}/_assets/css/${theme}-style.css`, `${DIST}/${theme}/_assets/css/style.css`)
 		// Rename theme info file to netothemeinfo.txt
 		shell.mv(`${DIST}/${theme}/${theme}-netothemeinfo.txt`, `${DIST}/${theme}/netothemeinfo.txt`)
-		// shell.cd("./src/templates")
 		log(success(`👍 ${theme} built!`))
 	})
 
