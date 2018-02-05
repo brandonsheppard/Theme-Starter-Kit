@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
-const pkg = require('../package.json');
-
 const shell = require('shelljs')
 const chalk = require('chalk')
 const log = console.log
@@ -25,9 +23,11 @@ module.exports.compileTheme = () => {
 	shell.exec(`git clone --depth 1 https://github.com/NetoECommerce/Skeletal.git ${DIST}/.latestSkeletal`)
 
 	shell.cd("./src/templates")
-	if(pkg.theme_names.length > 0){
+	const json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+
+	if(json.theme_names){
 		console.log('using package.json')
-		var THEMES = pkg.theme_names
+		var THEMES = json.theme_names
 	}else{
 		var THEMES = shell.ls('-A', '*-netothemeinfo.txt')
 	}
