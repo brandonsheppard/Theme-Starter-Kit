@@ -41,6 +41,7 @@ module.exports.generateTheme = (name) => {
 	shell.mkdir('-p', `${DEST}/src/templates/footers`)
 	// Create directories for assets
 	shell.mkdir('-p', `${DEST}/src/css`)
+	shell.mkdir('-p', `${DEST}/src/css/less`)
 	// Create Buildkite directory
 	shell.mkdir('-p', `${DEST}/.buildkite`)
 	log(success("👍 Directories created!"))
@@ -51,12 +52,16 @@ module.exports.generateTheme = (name) => {
 	shell.cp('-r', `${TEMP}/.latestSkeletal/src/templates/footers/template.html`,`${DEST}/src/templates/footers/`)
 	shell.cp('-r', `${TEMP}/.latestSkeletal/src/templates/cms/home.template.html`,`${DEST}/src/templates/cms/`)
 	// Copy in app.less
-	shell.cp('-r', `${TEMP}/.latestSkeletal/src/css/app.less`,`${DEST}/src/css/`)
+	shell.cp('-r', `${TEMP}/.latestSkeletal/src/css/less/_custom.less`,`${DEST}/src/css/`)
+	shell.cp('-r', `${TEMP}/.latestSkeletal/src/css/less/_neto.less`,`${DEST}/src/css/`)
+	shell.cp('-r', `${TEMP}/.latestSkeletal/src/css/less/_variables.less`,`${DEST}/src/css/`)
+	shell.cp('-r', `${TEMP}/.latestSkeletal/src/css/less/app.less`,`${DEST}/src/css/`)
 	shell.cp('-r', `${TEMP}/.latestSkeletal/src/css/app.css`,`${DEST}/src/css/`)
 	shell.cp('-r', `${TEMP}/.latestSkeletal/src/css/skeletal-style.css`,`${DEST}/src/css/${DEST}-style.css`)
 	// Copy some other required files
 	shell.cp('-r', `${TEMP}/.latestSkeletal/.gitignore`,`${DEST}/`)
 	shell.cp('-r', `${TEMP}/.latestSkeletal/gulpfile.js`,`${DEST}/`)
+	shell.cp('-r', `${TEMP}/.latestSkeletal/package-lock.json`,`${DEST}/`)
 	shell.cp('-r', `${TEMP}/.latestSkeletal/package.json`,`${DEST}/`)
 	shell.cp('-r', `${TEMP}/.latestSkeletal/README.md`,`${DEST}/`)
 	// Copy buildkite
