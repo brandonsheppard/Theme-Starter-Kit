@@ -41,7 +41,7 @@ echo "👉 Creating the required asset directories."
 
 # Create directories for assets
 mkdir "${DEST}/src/css"
-mkdir "${DEST}/src/js"
+mkdir "${DEST}/src/css/less"
 
 echo "👍"
 echo "👉 Creating the bin and Buildkite directories."
@@ -62,10 +62,12 @@ echo "👍"
 echo "👉 Copying the assets from Skeletal to our new theme."
 
 # Copy in custom.js and app.less
-cp -r "${TEMP}/.latestSkeletal/src/css/app.less" "${DEST}/src/css/"
+cp -r "${TEMP}/.latestSkeletal/src/css/less/_custom.less" "${DEST}/src/css/less/"
+cp -r "${TEMP}/.latestSkeletal/src/css/less/_neto.less" "${DEST}/src/css/less/"
+cp -r "${TEMP}/.latestSkeletal/src/css/less/_variables.less" "${DEST}/src/css/less/"
+cp -r "${TEMP}/.latestSkeletal/src/css/less/app.less" "${DEST}/src/css/less/"
 cp -r "${TEMP}/.latestSkeletal/src/css/app.css" "${DEST}/src/css/"
 cp -r "${TEMP}/.latestSkeletal/src/css/skeletal-style.css" "${DEST}/src/css/$1-style.css"
-cp -r "${TEMP}/.latestSkeletal/src/js/custom.js" "${DEST}/src/js/"
 
 echo "👍"
 echo "👉 Copying .gitignore, gulpfile.js, package.json and README.md from Skeletal to our new theme."
